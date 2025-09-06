@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Energy Test — image compression Cats</title>
+  <meta name="description" content="Advanced image compression cat product showcase for energy profiling (no optimizations applied)" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-row">
+      <div class="brand">
+        <a href="#" class="logo">PURR &nbsp;<span class="dot">.</span></a>
+      </div>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#new">New</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+<div class="header-actions">
+  <div class="search-wrap">
+    <button id="searchBtn" class="icon-btn" aria-label="Open search">🔍</button>
+    <div id="searchDropdown" class="search-dropdown" aria-hidden="true">
+      <button data-category="beds">Beds</button>
+      <button data-category="toys">Toys</button>
+      <button data-category="collars">Collars</button>
+      <button data-category="food">Food</button>
+    </div>
+  </div>
+
+  <button id="cartBtn" class="icon-btn" aria-label="Open cart">🛒<span id="cartCount" class="cart-count">0</span></button>
+  <button id="menuBtn" class="icon-btn mobile-only" aria-label="Toggle menu">☰</button>
+</div>
+
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <a href="#new">New</a>
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero slider -->
+    <section class="hero">
+      <div class="hero-slider" id="heroSlider" aria-roledescription="carousel">
+        <div class="slide active">
+          <img src="assets/compressed/hero1.jpg" alt="Cozy cat on bed">
+          <div class="hero-caption">
+            <h1 class="title">Cloud Bed — Dreamy naps guaranteed</h1>
+            <p class="lead">Ultra-soft, washable, and shaped for curled-up comfort.</p>
+            <a class="btn" href="category.html?cat=beds" aria-label="See beds">Shop Beds</a>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="assets/compressed/hero2.jpg" alt="Cat playing with toy">
+          <div class="hero-caption">
+            <h1 class="title">Play Stix — Endless swats & zooms</h1>
+            <p class="lead">Interactive wand toys to chase boredom away.</p>
+            <a class="btn" href="category.html?cat=toys" aria-label="See toys">Explore Toys</a>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="assets/compressed/hero3.jpg" alt="Cat wearing a collar">
+          <div class="hero-caption">
+            <h1 class="title">Collar & Tag — Safe, stylish, secure</h1>
+            <p class="lead">Breakaway safety collars with custom tags.</p>
+            <a class="btn" href="category.html?cat=collars" aria-label="See collars">See Collars</a>
+          </div>
+        </div>
+
+        <div class="hero-controls">
+          <button id="prevSlide" aria-label="Previous slide">‹</button>
+          <button id="nextSlide" aria-label="Next slide">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: collection / filters -->
+    <section class="collection container" id="collection">
+      <div class="collection-header">
+        <h2>Collection</h2>
+        <div class="controls">
+          <label>
+            Sort:
+            <select id="sortSelect" aria-label="Sort products">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+              <option value="name">Name</option>
+            </select>
+          </label>
+          <label>
+            Category:
+            <select id="filterSelect" aria-label="Filter category">
+              <option value="all">All</option>
+              <option value="beds">Beds</option>
+              <option value="toys">Toys</option>
+              <option value="collars">Collars</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid" id="productGrid" role="list">
+        <!-- JS will populate product cards -->
+      </div>
+    </section>
+
+    <!-- About / footer-ish -->
+    <section id="about" class="about container">
+      <div class="about-inner">
+        <h3>About PURR</h3>
+        <p>This cat-focused image compression site intentionally uses large images and client-side JavaScript to create realistic page load and runtime behaviour for energy profiling. No image compression, minification, or lazy-loading applied.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <header>
+      <h3>Your Cart</h3>
+      <button id="closeCart" class="icon-btn" aria-label="Close cart">✕</button>
+    </header>
+    <div id="cartItems" class="cart-items">
+      <p class="muted">Your cart is empty.</p>
+    </div>
+    <footer>
+      <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+      <button id="checkoutBtn" class="btn primary">Checkout</button>
+    </footer>
+  </aside>
+
+  <!-- Product Quick View Modal -->
+  <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button id="closeModal" class="icon-btn modal-close" aria-label="Close product view">✕</button>
+      <div class="modal-grid">
+        <div class="modal-images" id="modalImages">
+          <!-- slides inserted by JS -->
+        </div>
+        <div class="modal-info">
+          <h2 id="modalTitle">Product</h2>
+          <p id="modalPrice" class="price">$0.00</p>
+          <p id="modalDesc" class="desc">Description</p>
+          <div class="modal-actions">
+            <label>Qty:
+              <input id="modalQty" type="number" min="1" value="1" />
+            </label>
+            <button id="modalAdd" class="btn primary">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <p class="muted">hello@purr.example</p>
+      </div>
+      <div class="foot-col">
+        <h4>Follow</h4>
+        <p class="muted">Instagram · Twitter · Facebook</p>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <p class="muted">Privacy · Terms</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
